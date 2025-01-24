@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Checkout - StepUp</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  </head>
+  <body class="bg-purple-100">
+    <!-- Navbar -->
+    <nav class="bg-purple-600 p-4">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <a href="index.html" class="text-white text-2xl font-bold">StepUp</a>
+        <ul class="flex space-x-6">
+          <li><a href="index.html" class="text-white hover:text-gray-300">Home</a></li>
+          <li><a href="product.html" class="text-white hover:text-gray-300">Products</a></li>
+          <li><a href="cart.html" class="text-white hover:text-gray-300">Cart</a></li>
+          <li><a href="payment.html" class="text-white hover:text-gray-300">Payment</a></li>
+          <li>
+            <a href="#" id="auth-btn" class="text-white hover:text-gray-300">Login</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Section Data Checkout -->
+    <section class="py-8">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center text-purple-600 mb-8">Daftar Checkout</h2>
+
+        <!-- Filter -->
+        <div class="mb-6 flex justify-between items-center">
+          <div class="flex space-x-4">
+            <input type="text" id="search" placeholder="Cari Checkout ID..." class="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600" />
+            <button onclick="filterOrders()" class="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700">Cari</button>
+          </div>
+          <button onclick="refreshTable()" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Segarkan Tabel</button>
+        </div>
+
+        <!-- Data Table -->
+        <div class="overflow-x-auto bg-white shadow-md rounded-lg">
+          <table class="min-w-full text-sm text-gray-600">
+            <thead class="bg-purple-600 text-white">
+              <tr>
+                <th class="px-6 py-3 text-left">Checkout ID</th>
+                <th class="px-6 py-3 text-left">Nama</th>
+                <th class="px-6 py-3 text-left">Total (IDR)</th>
+                <th class="px-6 py-3 text-left">Alamat</th>
+                <th class="px-6 py-3 text-left">Telp</th>
+                <th class="px-6 py-3 text-left">Status</th>
+                <th class="px-6 py-3 text-left">Dibuat</th>
+                <th class="px-6 py-3 text-left">Diperbarui</th>
+              </tr>
+            </thead>
+            <tbody id="checkout-table" class="divide-y divide-gray-200">
+              <!-- Data checkout akan dimasukkan di sini -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-purple-600 py-6 text-white text-center">
+      <p>&copy; 2025 StepUp. All rights reserved.</p>
+    </footer>
+
+    <script src="../js/orders.js"></script>
+  </body>
+</html>

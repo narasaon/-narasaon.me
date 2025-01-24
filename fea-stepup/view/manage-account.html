@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Checkout Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="flex h-screen bg-gray-50">
+    <!-- Sidebar -->
+    <div class="w-64 bg-[#4527a0] text-white h-screen p-6">
+      <div class="text-3xl font-bold mb-8">Step Up</div>
+      <ul>
+        <li>
+          <a href="../index.html" class="block py-2 px-4 text-lg hover:bg-[#5c38a1] rounded-md"> Dashboard </a>
+        </li>
+        <li>
+          <a href="add-products.html" class="block py-2 px-4 text-lg hover:bg-[#5c38a1] rounded-md"> Add New Product </a>
+        </li>
+        <li>
+          <a href="view-products.html" class="block py-2 px-4 text-lg hover:bg-[#5c38a1] rounded-md"> View Products </a>
+        </li>
+        <li>
+          <a href="manage-account.html" class="block py-2 px-4 text-lg hover:bg-[#5c38a1] rounded-md"> Manage Account </a>
+        </li>
+        <li>
+          <a href="manage-payment.html" class="block py-2 px-4 text-lg hover:bg-[#5c38a1] rounded-md"> Manage Payment </a>
+        </li>
+        <li>
+          <!-- Logout -->
+          <button id="sidebar-logout-btn" class="block w-full text-left py-2 px-4 text-lg hover:bg-red-500 rounded-md mt-8">Logout</button>
+        </li>
+      </ul>
+    </div>
+    <!-- Main Content -->
+    <div class="flex-1 bg-gray-100 p-6">
+      <h1 class="text-3xl font-semibold text-gray-800 mb-6 text-center">Admin Checkout Management</h1>
+
+      <div class="overflow-x-auto bg-white rounded-lg shadow-md">
+        <table class="min-w-full table-auto text-gray-700">
+          <thead class="bg-gray-200">
+            <tr>
+              <th class="py-2 px-4 text-left border-b font-medium">Checkout ID</th>
+              <th class="py-2 px-4 text-left border-b font-medium">User Name</th>
+              <th class="py-2 px-4 text-left border-b font-medium">Total Price</th>
+              <th class="py-2 px-4 text-left border-b font-medium">Address</th>
+              <th class="py-2 px-4 text-left border-b font-medium">Phone Number</th>
+              <th class="py-2 px-4 text-left border-b font-medium">Status</th>
+              <th class="py-2 px-4 text-left border-b font-medium">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="checkout-table-body">
+            <!-- Dynamic rows will be inserted here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="../js/manage-account.js"></script>
+    <script src="../js/script.js"></script>
+  </body>
+</html>

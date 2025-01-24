@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Product</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 flex h-screen">
+    <!-- Sidebar -->
+    <div class="w-64 bg-[#4527a0] text-white h-screen p-6">
+      <div class="text-3xl font-bold mb-8">Step Up</div>
+      <ul>
+        <li>
+          <a href="../index.html" class="block py-2 px-4 text-lg hover:bg-[#5c38a1] rounded-md"> Dashboard </a>
+        </li>
+        <li>
+          <a href="add-products.html" class="block py-2 px-4 text-lg hover:bg-[#5c38a1] rounded-md"> Add New Product </a>
+        </li>
+        <li>
+          <a href="view-products.html" class="block py-2 px-4 text-lg hover:bg-[#5c38a1] rounded-md"> View Products </a>
+        </li>
+        <li>
+          <a href="manage-account.html" class="block py-2 px-4 text-lg hover:bg-[#5c38a1] rounded-md"> Manage Account </a>
+        </li>
+        <li>
+          <a href="manage-payment.html" class="block py-2 px-4 text-lg hover:bg-[#5c38a1] rounded-md"> Manage Payment </a>
+        </li>
+        <li>
+          <!-- Logout -->
+          <button id="sidebar-logout-btn" class="block w-full text-left py-2 px-4 text-lg hover:bg-red-500 rounded-md mt-8">Logout</button>
+        </li>
+      </ul>
+    </div>
+    <!-- Main Content -->
+    <div class="flex-1 p-8 overflow-y-auto">
+      <!-- Title -->
+      <div class="text-center mb-6">
+        <h1 class="text-3xl font-bold text-[#4527a0]">Edit Product</h1>
+        <p class="text-lg text-gray-700">Modify the product details below</p>
+      </div>
+
+      <!-- Product Form -->
+      <form id="productForm">
+        <input type="hidden" id="productId" />
+
+        <!-- Name Input -->
+        <div class="mb-4">
+          <label for="name" class="block text-gray-700 font-medium mb-2">Name:</label>
+          <input type="text" id="name" name="name" required class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#4527a0] focus:border-[#4527a0]" />
+        </div>
+
+        <!-- Brand Input -->
+        <div class="mb-4">
+          <label for="brand" class="block text-gray-700 font-medium mb-2">Brand:</label>
+          <input type="text" id="brand" name="brand" required class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#4527a0] focus:border-[#4527a0]" />
+        </div>
+
+        <!-- Category Input -->
+        <div class="mb-4">
+          <label for="category" class="block text-gray-700 font-medium mb-2">Category:</label>
+          <input type="text" id="category" name="category" required class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#4527a0] focus:border-[#4527a0]" />
+        </div>
+
+        <!-- Color Input -->
+        <div class="mb-4">
+          <label for="color" class="block text-gray-700 font-medium mb-2">Color:</label>
+          <input type="text" id="color" name="color" required class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#4527a0] focus:border-[#4527a0]" />
+        </div>
+
+        <!-- Price Input -->
+        <div class="mb-4">
+          <label for="price" class="block text-gray-700 font-medium mb-2">Price:</label>
+          <input type="number" id="price" name="price" required class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#4527a0] focus:border-[#4527a0]" />
+        </div>
+
+        <!-- Stock Input -->
+        <div class="mb-4">
+          <label for="stock" class="block text-gray-700 font-medium mb-2">Stock:</label>
+          <input type="number" id="stock" name="stock" required class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#4527a0] focus:border-[#4527a0]" />
+        </div>
+
+        <!-- Image Upload -->
+        <div class="mb-4">
+          <label for="image" class="block text-gray-700 font-medium mb-2">Upload Image:</label>
+          <input type="file" id="image" name="image" class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#4527a0] focus:border-[#4527a0]" />
+          <img id="imagePreview" class="mt-2 max-w-xs mx-auto" style="display: none; max-width: 100px" />
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex gap-4 justify-center mt-6">
+          <button type="submit" id="submitButton" class="px-6 py-3 bg-[#4527a0] text-white rounded-md hover:bg-[#5c38a1] transition duration-300">Update Product</button>
+          <button type="button" onclick="resetForm()" class="px-6 py-3 bg-gray-500 text-white rounded-md hover:bg-gray-600 transition duration-300">Reset</button>
+        </div>
+      </form>
+    </div>
+
+    <script src="../js/edit-product.js"></script>
+    <script src="../js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - StepUp</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  </head>
+  <body class="bg-purple-100 h-screen flex justify-center items-center">
+    <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-bold text-center text-purple-600 mb-6">Register for StepUp</h2>
+
+      <form id="registerForm" method="POST">
+        <div class="mb-4">
+          <label for="name" class="block text-sm font-semibold text-gray-700">Nama Lengkap</label>
+          <input type="text" id="name" name="name" required class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Nama lengkap Anda" />
+        </div>
+
+        <div class="mb-4">
+          <label for="email" class="block text-sm font-semibold text-gray-700">Email</label>
+          <input type="email" id="email" name="email" required class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Email Anda" aria-describedby="emailHelp" />
+          <small id="emailHelp" class="text-gray-500">Gunakan email yang valid.</small>
+        </div>
+
+        <div class="mb-4">
+          <label for="password" class="block text-sm font-semibold text-gray-700">Password</label>
+          <input type="password" id="password" name="password" required class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Password Anda" />
+        </div>
+
+        <div class="mb-4">
+          <label for="confirmPassword" class="block text-sm font-semibold text-gray-700">Konfirmasi Password</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            required
+            class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+            placeholder="Ulangi password Anda"
+          />
+        </div>
+
+        <div class="mb-6">
+          <label for="role" class="block text-sm font-semibold text-gray-700">Role</label>
+          <select id="role" name="role" required class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+
+        <div id="errorMessage" class="text-red-600 text-sm mb-4 hidden"></div>
+
+        <button type="submit" id="registerButton" class="w-full py-2 px-4 bg-purple-600 text-white font-semibold rounded-md hover:bg-purple-700 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">Register</button>
+
+        <div class="mt-4 text-center">
+          <p class="text-sm text-gray-600">Sudah punya akun? <a href="login.html" class="text-purple-600 hover:underline">Login</a></p>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      document.getElementById('registerForm').addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const role = document.getElementById('role').value;
+        const errorMessage = document.getElementById('errorMessage');
+        const registerButton = document.getElementById('registerButton');
+
+        // Reset pesan error
+        errorMessage.classList.add('hidden');
+        errorMessage.textContent = '';
+
+        // Validasi email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          errorMessage.textContent = 'Format email tidak valid.';
+          errorMessage.classList.remove('hidden');
+          return;
+        }
+
+        // Validasi password
+        if (password !== confirmPassword) {
+          errorMessage.textContent = 'Password dan Konfirmasi Password tidak cocok!';
+          errorMessage.classList.remove('hidden');
+          return;
+        }
+
+        // Disable tombol register
+        registerButton.disabled = true;
+        registerButton.textContent = 'Loading...';
+
+        try {
+          // Kirim data ke API backend
+          const response = await fetch('http://localhost:3000/api/register', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name, email, password, role }),
+          });
+
+          const result = await response.json();
+
+          if (response.ok) {
+            alert('Registrasi berhasil!');
+            window.location.href = 'login.html'; // Redirect ke halaman login
+          } else {
+            errorMessage.textContent = result.error;
+            errorMessage.classList.remove('hidden');
+          }
+        } catch (error) {
+          errorMessage.textContent = 'Terjadi kesalahan: ' + error.message;
+          errorMessage.classList.remove('hidden');
+        } finally {
+          registerButton.disabled = false;
+          registerButton.textContent = 'Register';
+        }
+      });
+    </script>
+  </body>
+</html>

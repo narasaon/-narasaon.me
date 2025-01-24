@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tambah Produk</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 flex h-screen">
+    <!-- Sidebar -->
+    <div class="w-64 bg-[#4527a0] text-white h-screen p-6">
+      <div class="text-3xl font-bold mb-8">Step Up</div>
+      <ul>
+        <li>
+          <a href="../index.html" class="block py-2 px-4 text-lg hover:bg-[#5c38a1] rounded-md"> Dashboard </a>
+        </li>
+        <li>
+          <a href="add-products.html" class="block py-2 px-4 text-lg hover:bg-[#5c38a1] rounded-md"> Add New Product </a>
+        </li>
+        <li>
+          <a href="view-products.html" class="block py-2 px-4 text-lg hover:bg-[#5c38a1] rounded-md"> View Products </a>
+        </li>
+        <li>
+          <a href="manage-account.html" class="block py-2 px-4 text-lg hover:bg-[#5c38a1] rounded-md"> Manage Account </a>
+        </li>
+        <li>
+          <a href="manage-payment.html" class="block py-2 px-4 text-lg hover:bg-[#5c38a1] rounded-md"> Manage Payment </a>
+        </li>
+        <li>
+          <!-- Logout -->
+          <button id="sidebar-logout-btn" class="block w-full text-left py-2 px-4 text-lg hover:bg-red-500 rounded-md mt-8">Logout</button>
+        </li>
+      </ul>
+    </div>
+    <!-- Main Content -->
+    <div class="flex-1 p-8 overflow-y-auto">
+      <h1 class="text-3xl font-bold text-[#4527a0] text-center mb-6">Tambah Produk</h1>
+      <div class="bg-white p-8 rounded-lg shadow-lg max-w-lg mx-auto">
+        <form id="productForm" class="space-y-6">
+          <!-- Nama Produk -->
+          <div class="form-group">
+            <label for="name" class="block text-gray-700">Nama Produk:</label>
+            <input type="text" id="name" name="name" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#4527a0]" />
+          </div>
+
+          <!-- Deskripsi -->
+          <div class="form-group">
+            <label for="description" class="block text-gray-700">Deskripsi:</label>
+            <textarea id="description" name="description" required rows="4" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#4527a0]"></textarea>
+          </div>
+
+          <!-- Brand -->
+          <div class="form-group">
+            <label for="brand" class="block text-gray-700">Brand:</label>
+            <input type="text" id="brand" name="brand" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#4527a0]" />
+          </div>
+
+          <!-- Kategori -->
+          <div class="form-group">
+            <label for="category" class="block text-gray-700">Kategori:</label>
+            <input type="text" id="category" name="category" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#4527a0]" />
+          </div>
+
+          <!-- Warna -->
+          <div class="form-group">
+            <label for="color" class="block text-gray-700">Warna:</label>
+            <input type="text" id="color" name="color" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#4527a0]" />
+          </div>
+
+          <!-- Harga -->
+          <div class="form-group">
+            <label for="price" class="block text-gray-700">Harga:</label>
+            <input type="number" id="price" name="price" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#4527a0]" />
+          </div>
+
+          <!-- Stok -->
+          <div class="form-group">
+            <label for="stock" class="block text-gray-700">Stok:</label>
+            <input type="number" id="stock" name="stock" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#4527a0]" />
+          </div>
+
+          <!-- Unggah Gambar -->
+          <div class="form-group">
+            <label for="image" class="block text-gray-700">Unggah Gambar:</label>
+            <input type="file" id="image" name="image" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#4527a0]" />
+          </div>
+
+          <!-- Tombol Submit dan Reset -->
+          <div class="flex justify-between gap-4">
+            <button type="submit" class="w-full py-3 bg-[#4527a0] text-white rounded-md hover:bg-[#5c38a1] transition duration-300 focus:outline-none focus:ring-2 focus:ring-[#4527a0]">Tambah Produk</button>
+            <button type="button" onclick="resetForm()" class="w-full py-3 bg-gray-400 text-white rounded-md hover:bg-gray-500 transition duration-300 focus:outline-none focus:ring-2 focus:ring-gray-400">Reset Form</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="../js/add-product.js"></script>
+    <script src="../js/script.js"></script>
+  </body>
+</html>
