@@ -25,7 +25,7 @@ async function submitPayment(event) {
   formData.append('payment_image', paymentImage);
 
   try {
-    const response = await fetch(`http://localhost:3000/api/payment/${checkoutId}`, {
+    const response = await fetch(`https://api.narasaon.me/api/payment/${checkoutId}`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,

@@ -25,7 +25,7 @@ function formatRupiah(value) {
 
 async function loadCheckoutItems() {
   try {
-    const response = await fetch('http://localhost:3000/api/cart', {
+    const response = await fetch('https://api.narasaon.me/api/cart', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -67,7 +67,7 @@ async function submitCheckout(event) {
   const phoneNumber = document.getElementById('phone_number').value;
 
   try {
-    const response = await fetch('http://localhost:3000/api/checkout', {
+    const response = await fetch('https://api.narasaon.me/api/checkout', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

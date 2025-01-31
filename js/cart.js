@@ -24,7 +24,7 @@ function formatRupiah(value) {
 
 async function loadCart() {
   try {
-    const response = await fetch('http://localhost:3000/api/cart', {
+    const response = await fetch('https://api.narasaon.me/api/cart', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -65,7 +65,7 @@ async function loadCart() {
 
 async function removeFromCart(productId) {
   try {
-    const response = await fetch('http://localhost:3000/api/cart/remove-single', {
+    const response = await fetch('https://api.narasaon.me/api/cart/remove-single', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

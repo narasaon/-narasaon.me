@@ -24,7 +24,7 @@ let products = [];
 
 async function loadProducts() {
   try {
-    const response = await fetch('http://localhost:3000/api/products', {
+    const response = await fetch('https://api.narasaon.me/api/products', {
       headers: {
         Authorization: `Bearer ${token}`,
       },

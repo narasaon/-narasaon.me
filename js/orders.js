@@ -20,7 +20,7 @@ function handleLogout() {
 
 // Ambil data checkout dari API
 async function fetchCheckoutData() {
-  const response = await fetch('http://localhost:3000/checkouts', {
+  const response = await fetch('https://api.narasaon.me/checkouts', {
     method: 'GET',
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
