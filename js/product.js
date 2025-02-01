@@ -66,7 +66,7 @@ async function addToCart(productId) {
   }
 
   try {
-    const response = await fetch('http://localhost:3000/api/cart/add', {
+    const response = await fetch('https://api.narasaon.me/api/cart/add', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ async function addToCart(productId) {
 
 async function updateCartCount() {
   try {
-    const response = await fetch('http://localhost:3000/api/cart', {
+    const response = await fetch('https://api.narasaon.me/api/cart', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
