@@ -9,7 +9,7 @@ function toggleLoginLogout() {
     localStorage.removeItem('token');
     loginBtn.innerText = 'Login';
     userNameElement.textContent = '';
-    window.location.href = '../../login.html'; // Redirect to login page after logout
+    window.location.href = 'narasaon.me/login'; // Redirect to login page after logout
   } else {
     loginBtn.innerText = 'Logout';
   }

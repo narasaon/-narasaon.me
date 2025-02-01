@@ -5,7 +5,7 @@ function toggleLoginLogout() {
   if (token) {
     localStorage.removeItem('token');
     loginBtn.innerText = 'Login';
-    window.location.href = '../../login.html';
+    window.location.href = 'narasaon.me/login';
   } else {
     loginBtn.innerText = 'Logout';
   }
