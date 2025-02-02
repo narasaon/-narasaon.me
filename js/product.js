@@ -5,14 +5,14 @@ const userNameElement = document.getElementById('userName');
 // Handle Login/Logout
 if (!token) {
   loginBtn.innerText = 'Login';
-  loginBtn.href = 'narasaon.me/login';
+  loginBtn.href = 'https://narasaon.me/login';
 } else {
   loginBtn.innerText = 'Logout';
   loginBtn.href = '#';
   loginBtn.onclick = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('cart');
-    window.location.href = 'narasaon.me/login';
+    window.location.href = 'https://narasaon.me/login';
   };
 }
 
