@@ -6,7 +6,7 @@ function checkLoginStatus() {
     authBtn.onclick = handleLogout;
   } else {
     authBtn.textContent = 'Login';
-    authBtn.onclick = () => (window.location.href = 'https://narasaon.me/login');
+    authBtn.onclick = () => (window.location.href = '/login');
   }
 }
 
@@ -15,7 +15,7 @@ function handleLogout() {
   localStorage.removeItem('token');
   alert('Anda telah logout.');
   checkLoginStatus();
-  window.location.href = 'https://narasaon.me/login'; // Redirect ke halaman login
+  window.location.replace = 'https://narasaon.me/login'; // Redirect ke halaman login
 }
 
 // Ambil data checkout dari API
