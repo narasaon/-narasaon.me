@@ -15,7 +15,7 @@ function handleLogout() {
   localStorage.removeItem('token');
   alert('Anda telah logout.');
   checkLoginStatus();
-  window.location.replace = 'https://narasaon.me/login'; // Redirect ke halaman login
+  window.location.replace('https://narasaon.me/login'); // Redirect ke halaman login
 }
 
 // Ambil data checkout dari API
