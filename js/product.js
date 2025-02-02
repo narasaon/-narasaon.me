@@ -39,9 +39,7 @@ async function loadProducts() {
             <h3 class="text-lg font-semibold text-purple-600">${product.name}</h3>
             <p class="text-gray-600 mb-2">Brand: ${product.brand}</p>
             <p class="text-gray-800 mb-2">IDR ${product.price.toLocaleString()}</p>
-            <button class="add-to-cart bg-purple-600 text-white px-4 py-2 rounded-md mt-2 w-full" data-id="${product.product_id}">
-                Add to Cart
-            </button>
+            <button class="add-to-cart bg-purple-600 text-white px-4 py-2 rounded-md mt-2 w-full" data-id="${product.product_id}">Add to Cart</button>
         </div>
       `;
       productGrid.innerHTML += productItem;
