@@ -39,7 +39,9 @@ async function loadProducts() {
             <h3 class="text-lg font-semibold text-purple-600">${product.name}</h3>
             <p class="text-gray-600 mb-2">Brand: ${product.brand}</p>
             <p class="text-gray-800 mb-2">IDR ${product.price.toLocaleString()}</p>
-            <button class="w-full py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700" onclick="addToCart('${product.id}')">Add to Cart</button>
+            <button class="add-to-cart bg-purple-600 text-white px-4 py-2 rounded-md mt-2 w-full" data-id="${product.product_id}">
+                Add to Cart
+            </button>
         </div>
       `;
       productGrid.innerHTML += productItem;
@@ -52,18 +54,6 @@ async function loadProducts() {
 }
 
 async function addToCart(productId) {
-  if (!token) {
-    alert('Please log in to add items to your cart.');
-    return;
-  }
-
-  const product = products.find((item) => item.id === productId);
-
-  if (!product) {
-    alert('Product not found.');
-    return;
-  }
-
   try {
     const response = await fetch('https://api.narasaon.me/api/cart/add', {
       method: 'POST',
@@ -71,27 +61,20 @@ async function addToCart(productId) {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({
-        product_id: product.id,
-        product_name: product.name,
-        product_code: product.code || '',
-        quantity: 1,
-        price: product.price,
-        image_url: product.image_url,
-      }),
+      body: JSON.stringify({ product_id: productId, quantity: 1 }),
     });
 
     if (!response.ok) {
       const errorData = await response.json();
-      alert(`Failed to add to cart: ${errorData.error}`);
+      console.error('Error adding to cart:', errorData);
+      alert(errorData.error || 'Gagal menambahkan produk ke keranjang.');
       return;
     }
 
-    alert('Product added to cart successfully!');
+    alert('Produk berhasil ditambahkan ke keranjang!');
     updateCartCount();
   } catch (error) {
     console.error('Error adding to cart:', error);
-    alert('Something went wrong. Please try again.');
   }
 }
 
