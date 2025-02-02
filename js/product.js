@@ -57,6 +57,8 @@ async function loadProducts() {
     // Tambahkan event listener ke tombol "Add to Cart"
     document.querySelectorAll('.add-to-cart').forEach((button) => {
       button.addEventListener('click', function () {
+        console.log('Tombol "Add to Cart" diklik');
+
         if (!token) {
           alert('Silakan login terlebih dahulu untuk menambahkan ke keranjang.');
           window.location.href = 'https://narasaon.me/login';
@@ -64,6 +66,7 @@ async function loadProducts() {
         }
 
         const productId = this.getAttribute('data-id');
+        console.log('Product ID:', productId); // Log ID produk
         addToCart(productId);
       });
     });
