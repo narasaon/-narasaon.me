@@ -1,21 +1,34 @@
 const token = localStorage.getItem('token');
+const loginBtn = document.getElementById('login-btn');
+const userNameElement = document.getElementById('userName');
 
-function toggleLoginLogout() {
-  const loginBtn = document.getElementById('login-btn');
-  if (token) {
-    localStorage.removeItem('token');
-    loginBtn.innerText = 'Login';
+// Handle Login/Logout
+if (!token) {
+  loginBtn.innerText = 'Login';
+  loginBtn.href = 'https://narasaon.me/login';
+} else {
+  loginBtn.innerText = 'Logout';
+  loginBtn.href = '#';
+  loginBtn.onclick = () => {
+    localStorage.clear(); // Menghapus semua data di localStorage
     window.location.href = 'https://narasaon.me/login';
-  } else {
-    loginBtn.innerText = 'Logout';
-  }
+  };
 }
+
+// Display Username
+const userName = localStorage.getItem('name');
+userNameElement.textContent = userName ? `Hi, ${userName}` : 'Hi, User';
 
 async function submitPayment(event) {
   event.preventDefault();
   const formData = new FormData();
   const checkoutId = document.getElementById('checkout_id').value;
   const paymentImage = document.getElementById('payment_image').files[0];
+
+  if (!token) {
+    alert('Silakan login terlebih dahulu untuk mengunggah pembayaran.');
+    return;
+  }
 
   if (!checkoutId) {
     alert('Silakan masukkan Checkout ID.');
@@ -38,7 +51,7 @@ async function submitPayment(event) {
       document.getElementById('payment-form').classList.add('hidden');
       document.getElementById('success-message').classList.remove('hidden');
 
-      // Redirect to order table page after 3 seconds
+      // Redirect ke halaman orders setelah 3 detik
       setTimeout(() => {
         window.location.href = 'https://narasaon.me/view/orders.html';
       }, 3000);
@@ -53,11 +66,5 @@ async function submitPayment(event) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (token) {
-    document.getElementById('login-btn').innerText = 'Logout';
-  } else {
-    document.getElementById('login-btn').innerText = 'Login';
-  }
-
   document.getElementById('payment-form').addEventListener('submit', submitPayment);
 });

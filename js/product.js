@@ -10,8 +10,7 @@ if (!token) {
   loginBtn.innerText = 'Logout';
   loginBtn.href = '#';
   loginBtn.onclick = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('cart');
+    localStorage.clear(); // Menghapus semua item di localStorage (token, cart, name, dll.)
     window.location.href = 'https://narasaon.me/login';
   };
 }
@@ -76,7 +75,7 @@ async function addToCart(productId) {
         product_id: product.id,
         product_name: product.name,
         product_code: product.code || '',
-        quantity: 1, // Default quantity
+        quantity: 1,
         price: product.price,
         image_url: product.image_url,
       }),
@@ -88,7 +87,6 @@ async function addToCart(productId) {
       return;
     }
 
-    const data = await response.json();
     alert('Product added to cart successfully!');
     updateCartCount();
   } catch (error) {

@@ -12,7 +12,7 @@ function checkLoginStatus() {
 
 // Fungsi logout
 function handleLogout() {
-  localStorage.removeItem('token');
+  localStorage.clear(); // Menghapus semua item di localStorage
   alert('Anda telah logout.');
   checkLoginStatus();
   window.location.replace('https://narasaon.me/login'); // Redirect ke halaman login

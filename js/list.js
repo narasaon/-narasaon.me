@@ -1,6 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
   const checkoutData = JSON.parse(localStorage.getItem('checkoutData'));
   const orderDetails = document.getElementById('order-details');
+  const loginBtn = document.getElementById('login-btn');
+  const logoutBtn = document.getElementById('logout-btn');
+
+  // Check if user is logged in
+  if (!localStorage.getItem('token')) {
+    loginBtn.style.display = 'inline-block'; // Show login button if not logged in
+    logoutBtn.style.display = 'none'; // Hide logout button if not logged in
+  } else {
+    loginBtn.style.display = 'none'; // Hide login button if logged in
+    logoutBtn.style.display = 'inline-block'; // Show logout button if logged in
+
+    logoutBtn.onclick = () => {
+      localStorage.clear(); // Clear all localStorage data (token, checkoutData, etc.)
+      window.location.href = 'https://narasaon.me/login'; // Redirect to login page
+    };
+  }
 
   if (checkoutData) {
     let orderHTML = `

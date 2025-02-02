@@ -4,9 +4,10 @@ const userNameElement = document.getElementById('userName');
 function toggleLoginLogout() {
   const loginBtn = document.getElementById('login-btn');
   if (token) {
-    localStorage.removeItem('token');
+    // Menghapus data di localStorage saat logout
+    localStorage.clear();
     loginBtn.innerText = 'Login';
-    window.location.href = 'narasaon.me/login';
+    window.location.href = 'narasaon.me/login'; // Redirect ke halaman login setelah logout
   } else {
     loginBtn.innerText = 'Logout';
   }
