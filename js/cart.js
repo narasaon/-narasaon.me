@@ -6,12 +6,19 @@ function toggleLoginLogout() {
   const userNameElement = document.getElementById('userName');
 
   if (token) {
+    // Hapus token untuk logout
     localStorage.removeItem('token');
+    localStorage.removeItem('name');
+
+    // Update UI
     loginBtn.innerText = 'Login';
     userNameElement.textContent = '';
-    window.location.replace('https://narasaon.me/login'); // Redirect to login page after logout
+
+    // Redirect ke halaman login
+    window.location.replace('https://narasaon.me/login');
   } else {
-    loginBtn.innerText = 'Logout';
+    // Jika belum login, langsung ke halaman login
+    window.location.href = 'https://narasaon.me/login';
   }
 }
 
@@ -88,13 +95,17 @@ async function removeFromCart(productId) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  const loginBtn = document.getElementById('login-btn');
+  const userNameElement = document.getElementById('userName');
+
   if (token) {
-    document.getElementById('login-btn').innerText = 'Logout';
+    loginBtn.innerText = 'Logout';
     const userName = localStorage.getItem('name');
-    document.getElementById('userName').textContent = userName ? `Hi, ${userName}` : 'Hi, User';
+    userNameElement.textContent = userName ? `Hi, ${userName}` : 'Hi, User';
   } else {
-    document.getElementById('login-btn').innerText = 'Login';
-    document.getElementById('userName').textContent = '';
+    loginBtn.innerText = 'Login';
+    userNameElement.textContent = '';
   }
+
   loadCart();
 });
