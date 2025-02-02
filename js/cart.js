@@ -1,22 +1,17 @@
 const token = localStorage.getItem('token');
 
 // Update login/logout button based on token existence
-function toggleLoginLogout(event) {
-  event.preventDefault(); // Mencegah perilaku default link
-
+function toggleLoginLogout() {
   const loginBtn = document.getElementById('login-btn');
   const userNameElement = document.getElementById('userName');
 
-  if (localStorage.getItem('token')) {
+  if (token) {
     localStorage.removeItem('token');
-    localStorage.removeItem('name'); // Hapus juga nama user jika ada
     loginBtn.innerText = 'Login';
     userNameElement.textContent = '';
-
-    // Redirect ke halaman login setelah logout
-    window.location.href = 'https://narasaon.me/login';
+    window.location.replace('https://narasaon.me/login'); // Redirect to login page after logout
   } else {
-    window.location.href = 'https://narasaon.me/login';
+    loginBtn.innerText = 'Logout';
   }
 }
 
