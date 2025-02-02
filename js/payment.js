@@ -5,7 +5,7 @@ function toggleLoginLogout() {
   if (token) {
     localStorage.removeItem('token');
     loginBtn.innerText = 'Login';
-    window.location.href = 'narasaon.me/login';
+    window.location.href = 'https://narasaon.me/login';
   } else {
     loginBtn.innerText = 'Logout';
   }
@@ -40,7 +40,7 @@ async function submitPayment(event) {
 
       // Redirect to order table page after 3 seconds
       setTimeout(() => {
-        window.location.href = '../view/orders.html';
+        window.location.href = 'https://narasaon.me/view/orders.html';
       }, 3000);
     } else {
       console.error('Error uploading payment:', result.message);
