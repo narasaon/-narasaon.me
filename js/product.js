@@ -44,6 +44,15 @@ async function loadProducts() {
       `;
       productGrid.innerHTML += productItem;
     });
+
+    // Attach event listeners to all "Add to Cart" buttons
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    addToCartButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const productId = button.getAttribute('data-id');
+        addToCart(productId);
+      });
+    });
   } catch (error) {
     console.error('Error fetching products:', error);
   }
